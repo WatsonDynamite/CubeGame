@@ -58,8 +58,9 @@ public partial class PlayerMovement2 : CharacterBody3D
 		Velocity = AuxVelocity;
 
 		//set animation on blend tree
-		//we convert the velocity values to a value between -1 and 1 by dividing them by our speed constant
-		AnimTree.Set("parameters/blend_position", new Vector2(Velocity.X / Speed, Velocity.Z / Speed));
+		//we convert the velocity value to a value between 0 and 1 by dividing the absolute by our speed constant
+
+		AnimTree.Set("parameters/Movement/blend_position", Math.Abs(Velocity.Length() / Speed));
 
 		MoveAndSlide();
 

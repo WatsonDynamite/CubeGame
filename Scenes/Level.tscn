@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://Scripts/BlockManager.cs" id="1_swxql"]
 [ext_resource type="Script" path="res://Scripts/Block.cs" id="2_xj53t"]
-[ext_resource type="Texture2D" uid="uid://5f3y4pefmu4v" path="res://BlockTextures/stone.png" id="3_hvolu"]
-[ext_resource type="Texture2D" uid="uid://jl66udjmkf5n" path="res://BlockTextures/dirt.png" id="4_10yji"]
-[ext_resource type="Texture2D" uid="uid://cp2t0ke43pcwd" path="res://BlockTextures/grass.png" id="5_7njst"]
+[ext_resource type="Texture2D" uid="uid://5f3y4pefmu4v" path="res://Assets/BlockTextures/stone.png" id="3_hvolu"]
+[ext_resource type="Texture2D" uid="uid://jl66udjmkf5n" path="res://Assets/BlockTextures/dirt.png" id="4_10yji"]
+[ext_resource type="Texture2D" uid="uid://cp2t0ke43pcwd" path="res://Assets/BlockTextures/grass.png" id="5_7njst"]
 [ext_resource type="PackedScene" uid="uid://kj5ynbd37u6v" path="res://Prefabs/Chunk.tscn" id="6_ueoet"]
 [ext_resource type="PackedScene" uid="uid://fp7nq7cixfcp" path="res://Prefabs/player.tscn" id="7_5xcwb"]
 

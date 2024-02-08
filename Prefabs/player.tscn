@@ -1,7 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://fp7nq7cixfcp"]
+[gd_scene load_steps=20 format=3 uid="uid://fp7nq7cixfcp"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerMovement2.cs" id="1_ncgw5"]
 [ext_resource type="Script" path="res://Scripts/SpringArmGD.gd" id="2_up3vt"]
+[ext_resource type="PackedScene" uid="uid://dqmjf0o8dnwfo" path="res://Assets/Models/woodensword.gltf" id="3_6mkoy"]
+[ext_resource type="Script" path="res://Scripts/Debug/FPSCounter.gd" id="4_cdab2"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_d7b3r"]
 size = Vector3(0.72, 0.655, 0.755)
@@ -157,170 +159,6 @@ tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = PackedFloat32Array(0, 1, 0, 0, -0.383, 0.924, 0.1, 1, -0.067, 0.25, -0.25, 0.933, 0.2, 1, 0, 0, -0.383, 0.924, 0.3, 1, 0.067, -0.25, -0.25, 0.933)
 
-[sub_resource type="Animation" id="Animation_gy5sn"]
-resource_name = "run_tilt_l"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "rotation_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0.256, 0.04, -0.151, 0.954)
-tracks/1/type = "rotation_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Body/Head")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, -0.216, 0, 0, 0.976)
-tracks/2/type = "position_3d"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FootR")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = PackedFloat32Array(0, 1, -0.3, 0.00206145, 0.00207408, 0.1, 1, -0.3, 0.2, 0.4, 0.2, 1, -0.3, 0.00206145, 0.00207408, 0.3, 1, -0.3, 0.6, -0.8)
-tracks/3/type = "position_3d"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Body")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = PackedFloat32Array(0, 1, 0, 1, 0, 0.1, 1, 0, 0.95, 0, 0.2, 1, 0, 1, 0, 0.3, 1, 0, 0.95, 0)
-tracks/4/type = "position_3d"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("HandL")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = PackedFloat32Array(0, 1, 0.7, 0.675, 0, 0.1, 1, 0.4, 0.675, 0.5, 0.2, 1, 0.7, 0.675, 0, 0.3, 1, 0.4, 1, -0.5)
-tracks/5/type = "position_3d"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("HandR")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = PackedFloat32Array(0, 1, -0.7, 0.675, 0, 0.1, 1, -0.4, 1, -0.5, 0.2, 1, -0.7, 0.675, 0, 0.3, 1, -0.4, 0.675, 0.5)
-tracks/6/type = "position_3d"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("FootL")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = PackedFloat32Array(0, 1, 0.3, 0.00206145, -0.00207408, 0.1, 1, 0.3, 0.6, -0.8, 0.2, 1, 0.3, 0.00206145, -0.00207408, 0.3, 1, 0.3, 0.2, 0.4)
-tracks/7/type = "rotation_3d"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("FootR")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.1, 1, -0.259, 0, 0, 0.966, 0.2, 1, 0, 0, 0, 1, 0.3, 1, -0.258969, 0, 0, 0.965886)
-tracks/8/type = "rotation_3d"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("FootL")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.1, 1, -0.259, 0, 0, 0.966, 0.2, 1, 0, 0, 0, 1, 0.3, 1, -0.259, 0, 0, 0.966)
-tracks/9/type = "rotation_3d"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("HandR")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = PackedFloat32Array(0, 1, 0, 0, 0.383, 0.924, 0.1, 1, 0.067, 0.25, 0.25, 0.933, 0.2, 1, 0, 0, 0.383, 0.924, 0.3, 1, 0.067, 0.25, 0.25, 0.933)
-tracks/10/type = "rotation_3d"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("HandL")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = PackedFloat32Array(0, 1, 0, 0, -0.383, 0.924, 0.1, 1, -0.067, 0.25, -0.25, 0.933, 0.2, 1, 0, 0, -0.383, 0.924, 0.3, 1, 0.067, -0.25, -0.25, 0.933)
-
-[sub_resource type="Animation" id="Animation_bp4yf"]
-resource_name = "run_tilt_r"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "rotation_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0.256, -0.04, 0.151, 0.954)
-tracks/1/type = "rotation_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Body/Head")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, -0.216, 0, 0, 0.976)
-tracks/2/type = "position_3d"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FootR")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = PackedFloat32Array(0, 1, -0.3, 0.00206145, 0.00207408, 0.1, 1, -0.3, 0.2, 0.4, 0.2, 1, -0.3, 0.00206145, 0.00207408, 0.3, 1, -0.3, 0.6, -0.8)
-tracks/3/type = "position_3d"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Body")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = PackedFloat32Array(0, 1, 0, 1, 0, 0.1, 1, 0, 0.95, 0, 0.2, 1, 0, 1, 0, 0.3, 1, 0, 0.95, 0)
-tracks/4/type = "position_3d"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("HandL")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = PackedFloat32Array(0, 1, 0.7, 0.675, 0, 0.1, 1, 0.4, 0.675, 0.5, 0.2, 1, 0.7, 0.675, 0, 0.3, 1, 0.4, 1, -0.5)
-tracks/5/type = "position_3d"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("HandR")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = PackedFloat32Array(0, 1, -0.7, 0.675, 0, 0.1, 1, -0.4, 1, -0.5, 0.2, 1, -0.7, 0.675, 0, 0.3, 1, -0.4, 0.675, 0.5)
-tracks/6/type = "position_3d"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("FootL")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = PackedFloat32Array(0, 1, 0.3, 0.00206145, -0.00207408, 0.1, 1, 0.3, 0.6, -0.8, 0.2, 1, 0.3, 0.00206145, -0.00207408, 0.3, 1, 0.3, 0.2, 0.4)
-tracks/7/type = "rotation_3d"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("FootR")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.1, 1, -0.259, 0, 0, 0.966, 0.2, 1, 0, 0, 0, 1, 0.3, 1, -0.258969, 0, 0, 0.965886)
-tracks/8/type = "rotation_3d"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("FootL")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.1, 1, -0.259, 0, 0, 0.966, 0.2, 1, 0, 0, 0, 1, 0.3, 1, -0.259, 0, 0, 0.966)
-tracks/9/type = "rotation_3d"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("HandR")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = PackedFloat32Array(0, 1, 0, 0, 0.383, 0.924, 0.1, 1, 0.067, 0.25, 0.25, 0.933, 0.2, 1, 0, 0, 0.383, 0.924, 0.3, 1, 0.067, 0.25, 0.25, 0.933)
-tracks/10/type = "rotation_3d"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("HandL")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = PackedFloat32Array(0, 1, 0, 0, -0.383, 0.924, 0.1, 1, -0.067, 0.25, -0.25, 0.933, 0.2, 1, 0, 0, -0.383, 0.924, 0.3, 1, 0.067, -0.25, -0.25, 0.933)
-
 [sub_resource type="Animation" id="Animation_r1gkh"]
 resource_name = "walk"
 length = 0.6
@@ -366,72 +204,34 @@ _data = {
 "RESET": SubResource("Animation_n287h"),
 "idle": SubResource("Animation_ee8c4"),
 "run": SubResource("Animation_o6ax5"),
-"run_tilt_l": SubResource("Animation_gy5sn"),
-"run_tilt_r": SubResource("Animation_bp4yf"),
 "walk": SubResource("Animation_r1gkh")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fyxr2"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f0dc4"]
 animation = &"idle"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wiyop"]
-animation = &"walk"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3ioe1"]
-animation = &"idle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wmixw"]
-animation = &"idle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pin5w"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_foepo"]
 animation = &"run"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xps2b"]
-animation = &"run"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_waihs"]
-animation = &"run"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u4qta"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1t1av"]
 animation = &"walk"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v12di"]
-animation = &"walk"
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_7n5lo"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_f0dc4")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_foepo")
+blend_point_1/pos = 1.0
+blend_point_2/node = SubResource("AnimationNodeAnimation_1t1av")
+blend_point_2/pos = 0.5
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i1ei0"]
-animation = &"walk"
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uyi5r"]
+advance_mode = 2
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gm3fv"]
-animation = &"run"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_26deb"]
-animation = &"idle"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_w51b5"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_fyxr2")
-blend_point_0/pos = Vector2(0, 0.2)
-blend_point_1/node = SubResource("AnimationNodeAnimation_wiyop")
-blend_point_1/pos = Vector2(0, 0.9)
-blend_point_2/node = SubResource("AnimationNodeAnimation_pin5w")
-blend_point_2/pos = Vector2(-0.7, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_xps2b")
-blend_point_3/pos = Vector2(0, -1)
-blend_point_4/node = SubResource("AnimationNodeAnimation_waihs")
-blend_point_4/pos = Vector2(0.7, 0)
-blend_point_5/node = SubResource("AnimationNodeAnimation_u4qta")
-blend_point_5/pos = Vector2(0, -0.9)
-blend_point_6/node = SubResource("AnimationNodeAnimation_v12di")
-blend_point_6/pos = Vector2(-0.6, 0)
-blend_point_7/node = SubResource("AnimationNodeAnimation_i1ei0")
-blend_point_7/pos = Vector2(0.6, 0)
-blend_point_8/node = SubResource("AnimationNodeAnimation_gm3fv")
-blend_point_8/pos = Vector2(0, 1)
-blend_point_9/node = SubResource("AnimationNodeAnimation_26deb")
-blend_point_9/pos = Vector2(0, -0.2)
-blend_point_10/node = SubResource("AnimationNodeAnimation_3ioe1")
-blend_point_10/pos = Vector2(-0.2, 0)
-blend_point_11/node = SubResource("AnimationNodeAnimation_wmixw")
-blend_point_11/pos = Vector2(0.2, 0)
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5y3le"]
+states/Movement/node = SubResource("AnimationNodeBlendSpace1D_7n5lo")
+states/Movement/position = Vector2(389, 107)
+states/Start/position = Vector2(168, 107)
+transitions = ["Start", "Movement", SubResource("AnimationNodeStateMachineTransition_uyi5r")]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i2jja"]
 radius = 0.353859
@@ -456,7 +256,6 @@ current = true
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Body" type="Node3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.956414, 0)
 
 [node name="Head" type="Node3D" parent="Model/Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.831681, 0)
@@ -469,27 +268,34 @@ skeleton = NodePath("../..")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Model/Body"]
 mesh = SubResource("BoxMesh_aya8l")
 
+[node name="WeaponBackPivot" type="Node3D" parent="Model/Body"]
+transform = Transform3D(-0.699139, -0.714985, -1.48544e-07, 0.714985, -0.699139, 6.2506e-08, -1.48544e-07, -6.2506e-08, 1, 0.452127, 0.509588, 0.493297)
+
 [node name="HandL" type="Node3D" parent="Model"]
-transform = Transform3D(0.996434, 0.0843775, 0, -0.0843775, 0.996434, 0, 0, 0, 0.999999, 0.700735, 0.675, 0.277521)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Model/HandL"]
 transform = Transform3D(1, -3.26236e-09, 0, 2.65391e-08, 1, -2.32831e-10, -1.16415e-10, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_dwvro")
 
 [node name="HandR" type="Node3D" parent="Model"]
-transform = Transform3D(0.996434, -0.0843775, 0, 0.0843775, 0.996434, 0, 0, 0, 0.999999, -0.700735, 0.675, -0.277521)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Model/HandR"]
 mesh = SubResource("BoxMesh_dwvro")
 
+[node name="WeaponHandPivot" type="Node3D" parent="Model/HandR"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.2, -0.2)
+
+[node name="woodensword" parent="Model/HandR/WeaponHandPivot" instance=ExtResource("3_6mkoy")]
+transform = Transform3D(1, -2.6219e-15, 0, -2.6219e-15, 1, 0, 1.42109e-14, -7.10543e-15, 1, 0, 0, 0)
+
 [node name="FootR" type="Node3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.0849036, 0.277521)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Model/FootR"]
 mesh = SubResource("BoxMesh_dwvro")
 
 [node name="FootL" type="Node3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.0849036, -0.277521)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Model/FootL"]
 mesh = SubResource("BoxMesh_dwvro")
@@ -499,10 +305,10 @@ root_node = NodePath("../Model")
 libraries = {
 "": SubResource("AnimationLibrary_xoxpg")
 }
-tree_root = SubResource("AnimationNodeBlendSpace2D_w51b5")
+tree_root = SubResource("AnimationNodeStateMachine_5y3le")
 advance_expression_base_node = NodePath("../Model")
 anim_player = NodePath("../AnimationPlayer")
-parameters/blend_position = Vector2(-0.519784, -0.0526316)
+parameters/Movement/blend_position = 0.00188684
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Model")
@@ -570,3 +376,16 @@ offset_left = 719.0
 offset_top = 593.0
 offset_right = 759.0
 offset_bottom = 633.0
+
+[node name="FPS counter" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasLayer/FPS counter"]
+layout_mode = 0
+offset_right = 74.0
+offset_bottom = 23.0
+text = "666"
+script = ExtResource("4_cdab2")
