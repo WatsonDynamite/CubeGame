@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://fp7nq7cixfcp"]
+[gd_scene load_steps=27 format=3 uid="uid://fp7nq7cixfcp"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerMovement2.cs" id="1_ncgw5"]
 [ext_resource type="Script" path="res://Scripts/SpringArmGD.gd" id="2_up3vt"]
@@ -156,46 +156,6 @@ tracks/10/path = NodePath("HandL")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = PackedFloat32Array(0, 1, 0, 0, -0.383, 0.924, 0.1, 1, -0.067, 0.25, -0.25, 0.933, 0.2, 1, 0, 0, -0.383, 0.924, 0.3, 1, 0.067, -0.25, -0.25, 0.933)
-
-[sub_resource type="Animation" id="Animation_r1gkh"]
-resource_name = "walk"
-length = 0.6
-loop_mode = 1
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 1, 0, 0.2, 1, 0, 0.9, 0, 0.3, 1, 0, 1, 0, 0.5, 1, 0, 0.9, 0)
-tracks/1/type = "position_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HandL")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0.7, 0.675, 0, 0.2, 1, 0.7, 0.675, 0.5, 0.5, 1, 0.7, 0.675, -0.5)
-tracks/2/type = "position_3d"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("HandR")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = PackedFloat32Array(0, 1, -0.7, 0.675, 0, 0.2, 1, -0.7, 0.675, -0.5, 0.5, 1, -0.7, 0.675, 0.5)
-tracks/3/type = "position_3d"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("FootR")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = PackedFloat32Array(0, 1, -0.3, 0.0937519, 0, 0.2, 1, -0.3, 0.094, 0.5, 0.5, 1, -0.3, 0.094, -0.5)
-tracks/4/type = "position_3d"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("FootL")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = PackedFloat32Array(0, 1, 0.3, 0.0937519, 0, 0.2, 1, 0.3, 0.094, -0.5, 0.5, 1, 0.3, 0.094, 0.5)
 
 [sub_resource type="Animation" id="Animation_gy5sn"]
 resource_name = "run_tilt_l"
@@ -361,6 +321,46 @@ tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = PackedFloat32Array(0, 1, 0, 0, -0.383, 0.924, 0.1, 1, -0.067, 0.25, -0.25, 0.933, 0.2, 1, 0, 0, -0.383, 0.924, 0.3, 1, 0.067, -0.25, -0.25, 0.933)
 
+[sub_resource type="Animation" id="Animation_r1gkh"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 1, 0, 0.2, 1, 0, 0.9, 0, 0.3, 1, 0, 1, 0, 0.5, 1, 0, 0.9, 0)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HandL")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.7, 0.675, 0, 0.2, 1, 0.7, 0.675, 0.5, 0.5, 1, 0.7, 0.675, -0.5)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HandR")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, -0.7, 0.675, 0, 0.2, 1, -0.7, 0.675, -0.5, 0.5, 1, -0.7, 0.675, 0.5)
+tracks/3/type = "position_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FootR")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, -0.3, 0.0937519, 0, 0.2, 1, -0.3, 0.094, 0.5, 0.5, 1, -0.3, 0.094, -0.5)
+tracks/4/type = "position_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FootL")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0.3, 0.0937519, 0, 0.2, 1, 0.3, 0.094, -0.5, 0.5, 1, 0.3, 0.094, 0.5)
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xoxpg"]
 _data = {
 "RESET": SubResource("Animation_n287h"),
@@ -377,14 +377,20 @@ animation = &"idle"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wiyop"]
 animation = &"walk"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3ioe1"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wmixw"]
+animation = &"idle"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pin5w"]
-animation = &"run_tilt_l"
+animation = &"run"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xps2b"]
 animation = &"run"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_waihs"]
-animation = &"run_tilt_r"
+animation = &"run"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u4qta"]
 animation = &"walk"
@@ -398,11 +404,14 @@ animation = &"walk"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gm3fv"]
 animation = &"run"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_26deb"]
+animation = &"idle"
+
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_w51b5"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_fyxr2")
-blend_point_0/pos = Vector2(0, 0)
+blend_point_0/pos = Vector2(0, 0.2)
 blend_point_1/node = SubResource("AnimationNodeAnimation_wiyop")
-blend_point_1/pos = Vector2(0, 0.5)
+blend_point_1/pos = Vector2(0, 0.9)
 blend_point_2/node = SubResource("AnimationNodeAnimation_pin5w")
 blend_point_2/pos = Vector2(-0.7, 0)
 blend_point_3/node = SubResource("AnimationNodeAnimation_xps2b")
@@ -410,13 +419,19 @@ blend_point_3/pos = Vector2(0, -1)
 blend_point_4/node = SubResource("AnimationNodeAnimation_waihs")
 blend_point_4/pos = Vector2(0.7, 0)
 blend_point_5/node = SubResource("AnimationNodeAnimation_u4qta")
-blend_point_5/pos = Vector2(0, -0.5)
+blend_point_5/pos = Vector2(0, -0.9)
 blend_point_6/node = SubResource("AnimationNodeAnimation_v12di")
-blend_point_6/pos = Vector2(-0.5, 0)
+blend_point_6/pos = Vector2(-0.6, 0)
 blend_point_7/node = SubResource("AnimationNodeAnimation_i1ei0")
-blend_point_7/pos = Vector2(0.5, 0)
+blend_point_7/pos = Vector2(0.6, 0)
 blend_point_8/node = SubResource("AnimationNodeAnimation_gm3fv")
 blend_point_8/pos = Vector2(0, 1)
+blend_point_9/node = SubResource("AnimationNodeAnimation_26deb")
+blend_point_9/pos = Vector2(0, -0.2)
+blend_point_10/node = SubResource("AnimationNodeAnimation_3ioe1")
+blend_point_10/pos = Vector2(-0.2, 0)
+blend_point_11/node = SubResource("AnimationNodeAnimation_wmixw")
+blend_point_11/pos = Vector2(0.2, 0)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i2jja"]
 radius = 0.353859
@@ -441,12 +456,13 @@ current = true
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Body" type="Node3D" parent="Model"]
-transform = Transform3D(0.951201, 0.308572, -0.000991956, -0.267614, 0.823335, -0.500502, -0.153624, 0.476343, 0.865735, 0, 0.997694, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.956414, 0)
 
 [node name="Head" type="Node3D" parent="Model/Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.831681, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Model/Body/Head"]
+transform = Transform3D(1, 0, 0, -3.10588e-22, 1, 0, 7.10543e-15, -3.55271e-15, 1, -1.19209e-07, -0.00751066, -7.10543e-15)
 mesh = SubResource("BoxMesh_d7b3r")
 skeleton = NodePath("../..")
 
@@ -454,26 +470,26 @@ skeleton = NodePath("../..")
 mesh = SubResource("BoxMesh_aya8l")
 
 [node name="HandL" type="Node3D" parent="Model"]
-transform = Transform3D(0.714835, 0.69888, -0.0240151, -0.699027, 0.715089, 0.0030223, 0.0192852, 0.0146268, 0.999706, 0.686166, 0.689987, -0.0230573)
+transform = Transform3D(0.996434, 0.0843775, 0, -0.0843775, 0.996434, 0, 0, 0, 0.999999, 0.700735, 0.675, 0.277521)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Model/HandL"]
 transform = Transform3D(1, -3.26236e-09, 0, 2.65391e-08, 1, -2.32831e-10, -1.16415e-10, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_dwvro")
 
 [node name="HandR" type="Node3D" parent="Model"]
-transform = Transform3D(0.714835, -0.69888, 0.0240151, 0.699027, 0.715089, 0.0030223, -0.0192852, 0.0146268, 0.999706, -0.686166, 0.675, 0.0230573)
+transform = Transform3D(0.996434, -0.0843775, 0, 0.0843775, 0.996434, 0, 0, 0, 0.999999, -0.700735, 0.675, -0.277521)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Model/HandR"]
 mesh = SubResource("BoxMesh_dwvro")
 
 [node name="FootR" type="Node3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, 0.999708, 0.0241576, 0, -0.0241576, 0.999708, -0.3, 0.0296352, -0.0349133)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.0849036, 0.277521)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Model/FootR"]
 mesh = SubResource("BoxMesh_dwvro")
 
 [node name="FootL" type="Node3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, 0.999708, 0.0241595, 0, -0.0241595, 0.999708, 0.3, 0.0111893, 0.0164674)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.0849036, -0.277521)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Model/FootL"]
 mesh = SubResource("BoxMesh_dwvro")
@@ -486,7 +502,7 @@ libraries = {
 tree_root = SubResource("AnimationNodeBlendSpace2D_w51b5")
 advance_expression_base_node = NodePath("../Model")
 anim_player = NodePath("../AnimationPlayer")
-parameters/blend_position = Vector2(-0.996403, 0)
+parameters/blend_position = Vector2(-0.519784, -0.0526316)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Model")
@@ -500,8 +516,57 @@ shape = SubResource("CapsuleShape3D_i2jja")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="DebugDraw3D" type="Control" parent="CanvasLayer"]
+[node name="UI" type="Control" parent="CanvasLayer"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 2.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Attack1" type="Panel" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_left = 380.0
+offset_top = 593.0
+offset_right = 420.0
+offset_bottom = 633.0
+
+[node name="Attack2" type="Panel" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 593.0
+offset_right = 469.0
+offset_bottom = 633.0
+
+[node name="Attack3" type="Panel" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_left = 479.0
+offset_top = 593.0
+offset_right = 519.0
+offset_bottom = 633.0
+
+[node name="Attack4" type="Panel" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_left = 620.0
+offset_top = 593.0
+offset_right = 660.0
+offset_bottom = 633.0
+
+[node name="Attack5" type="Panel" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_left = 670.0
+offset_top = 593.0
+offset_right = 710.0
+offset_bottom = 633.0
+
+[node name="Attack6" type="Panel" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_left = 719.0
+offset_top = 593.0
+offset_right = 759.0
+offset_bottom = 633.0
