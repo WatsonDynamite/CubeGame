@@ -6,7 +6,6 @@ public class Stats {
     public int Defense { get; set; }
     public int Arcane { get; set; } //Magic Attack
     public int Warding; //Magic Defense
-    public int Agility;
     public int Luck;
 
 
@@ -16,7 +15,6 @@ public class Stats {
         this.Defense = def;
         this.Arcane = arc;
         this.Warding = ward;
-        this.Agility = agi;
         this.Luck = luck;
     }
 }
