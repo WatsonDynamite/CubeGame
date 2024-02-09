@@ -2,8 +2,9 @@ using System;
 using Godot;
 
 public partial class PlayerMovement2 : CharacterBody3D
-{
-	[Export] public const float Speed = 5.0f;
+{	
+	public static PlayerMovement2 Instance { get; private set;}
+	[Export] public const float Speed = 10.0f;
 	[Export] public const float JumpVelocity = 10f;
 	[Export] public const float Friction = 6f;
 
@@ -21,6 +22,8 @@ public partial class PlayerMovement2 : CharacterBody3D
 
 	public AnimationTree AnimTree;
 	public override void _Ready() {
+		Instance = this;
+
 		SpringArm = GetNode("CameraPivot/CameraArm") as SpringArm3D;
 		SpringArm.AddExcludedObject(GetRid());
 		Model = GetNode<Node3D>("Model");
@@ -64,11 +67,23 @@ public partial class PlayerMovement2 : CharacterBody3D
 
 		MoveAndSlide();
 
+
 		if(new Vector2(AuxVelocity.X, AuxVelocity.Z).Length() > 0.2f) {
 
+			/*Code for various player model rotations
+				- The player model needs to turn to face the movement direction
+				- However we also have a cosmetic tilt of the character's body when the player turns
+					- to do this, we rotate the body bone around the Z axis in the angle formed by the model's current forward
+						and the movement vector's forward
+					- we need to make a copy of the movement vector with no Y axis to make it always face upward
+						otherwise the simple act of falling will cause the player to tilt as the velocity vector will have a 180 degree angle with the
+						model's forward vector
+			*/
+
+			Vector3 AuxVelocityFacingUp = new Vector3(AuxVelocity.X, 0, AuxVelocity.Z);
 			//Angle in degrees between the movement direction and the model's forward direction
-			//We clamp the angle because we don't want more than a 45 degree tilt
-			float DirectionAngle = Math.Clamp(Mathf.RadToDeg(AuxVelocity.SignedAngleTo(Model.GlobalBasis.Z, Vector3.Up)), -45, 45);
+			//We clamp the angle because we don't want more than a 30 degree tilt
+			float DirectionAngle = Math.Clamp(Mathf.RadToDeg(AuxVelocityFacingUp.SignedAngleTo(Model.GlobalBasis.Z, Vector3.Up)), -30, 30);
 			//Amount to tilt the player model
 			float TiltLerpAngle = Mathf.LerpAngle(Model.Rotation.Z, Mathf.DegToRad(DirectionAngle), (float) (delta * TurnAccel));
 

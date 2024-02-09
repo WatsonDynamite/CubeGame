@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://ct24auagsh4cs"]
+[gd_scene load_steps=16 format=3 uid="uid://ct24auagsh4cs"]
 
-[ext_resource type="Script" path="res://Scripts/BlockManager.cs" id="1_swxql"]
-[ext_resource type="Script" path="res://Scripts/Block.cs" id="2_xj53t"]
+[ext_resource type="Script" path="res://Scripts/Behaviors/ChunkManager.cs" id="1_qru7c"]
+[ext_resource type="Script" path="res://Scripts/Behaviors/BlockManager.cs" id="1_swxql"]
+[ext_resource type="Script" path="res://Scripts/Behaviors/Block.cs" id="2_xj53t"]
 [ext_resource type="Texture2D" uid="uid://5f3y4pefmu4v" path="res://Assets/BlockTextures/stone.png" id="3_hvolu"]
 [ext_resource type="Texture2D" uid="uid://jl66udjmkf5n" path="res://Assets/BlockTextures/dirt.png" id="4_10yji"]
 [ext_resource type="Texture2D" uid="uid://cp2t0ke43pcwd" path="res://Assets/BlockTextures/grass.png" id="5_7njst"]
@@ -31,6 +32,9 @@ sky_material = SubResource("ProceduralSkyMaterial_fqxax")
 [sub_resource type="Environment" id="Environment_usyp2"]
 background_mode = 2
 sky = SubResource("Sky_sy3nm")
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_use_occlusion = true
 
 [node name="Level" type="Node3D"]
 
@@ -40,6 +44,10 @@ Air = SubResource("Resource_ll5hi")
 Stone = SubResource("Resource_12ool")
 Dirt = SubResource("Resource_5uev8")
 Grass = SubResource("Resource_nllia")
+
+[node name="ChunkManager" type="Node" parent="."]
+script = ExtResource("1_qru7c")
+ChunkScene = ExtResource("6_ueoet")
 
 [node name="Chunk" parent="." instance=ExtResource("6_ueoet")]
 

@@ -1,6 +1,8 @@
 using Godot;
 
 
+// Taken from xen42's Minecraft Terrain tutorial
+
 [Tool]
 public partial class Chunk : StaticBody3D
 {
@@ -11,7 +13,7 @@ public partial class Chunk : StaticBody3D
 	[Export]
 	public MeshInstance3D MeshInstance { get; set; }
 
-	public static Vector3I dimensions = new Vector3I(16, 64, 16);
+	public static Vector3I dimensions = new Vector3I(64, 256, 64);
 
 	private static readonly Vector3I[] vertices = new Vector3I[]
 	{
@@ -42,16 +44,15 @@ public partial class Chunk : StaticBody3D
 	[Export]
 	public FastNoiseLite Noise { get; set; }
 
+	public void SetChunkPosition(Vector2I position) {
 
-
-
-	public override void _Ready() {
-		ChunkPosition = new Vector2I(Mathf.FloorToInt(GlobalPosition.X / dimensions.X), Mathf.FloorToInt(GlobalPosition.Z / dimensions.Z));
+		ChunkManager.Instance.UpdateChunkPosition(this, position, ChunkPosition);
+		ChunkPosition = position;
+		CallDeferred(Node3D.MethodName.SetGlobalPosition, new Vector3(ChunkPosition.X * dimensions.X, 0, ChunkPosition.Y * dimensions.Z));
 
 		Generate();
 		Update();
 	}
-
 
 	public void Generate()
 	{
@@ -99,6 +100,7 @@ public partial class Chunk : StaticBody3D
 				}
 			}
 		}
+
 
 		_surfaceTool.SetMaterial(BlockManager.Instance.ChunkMaterial);
 		var mesh = _surfaceTool.Commit();
@@ -169,8 +171,12 @@ public partial class Chunk : StaticBody3D
 		var triangle1 = new Vector3[] { a, b, c };
 		var triangle2 = new Vector3[] { a, c, d };
 
-		_surfaceTool.AddTriangleFan(triangle1, uvTriangle1);
-		_surfaceTool.AddTriangleFan(triangle2, uvTriangle2);
+		var normal = ((Vector3)(c - a)).Cross((Vector3)(b - a)).Normalized();
+		var normals = new Vector3[] { normal, normal, normal };
+
+		_surfaceTool.AddTriangleFan(triangle1, uvTriangle1, normals: normals);
+		_surfaceTool.AddTriangleFan(triangle2, uvTriangle2, normals: normals);
+
 	}
 
 	private bool CheckTransparent(Vector3I blockPosition) {
@@ -180,5 +186,10 @@ public partial class Chunk : StaticBody3D
 		if(blockPosition.Z < 0 || blockPosition.Z >= dimensions.Z) return true;
 
 		return _blocks[blockPosition.X, blockPosition.Y, blockPosition.Z] == BlockManager.Instance.Air;
+	}
+
+	public void SetBlock(Vector3I blockPosition, Block block) {
+		_blocks[blockPosition.X, blockPosition.Y, blockPosition.Z] = block;
+		Update();
 	}
 }

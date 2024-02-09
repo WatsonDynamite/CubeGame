@@ -12,14 +12,16 @@ func _ready():
 func _process(_delta):
 	if Input.is_action_just_pressed("toggle_cursor"):
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			print("setting mouse to visible")
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE);
-		if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);	
+		elif Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+			print("setting mouse to captured")
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
 
 
 
 func _unhandled_input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotation_degrees.x -= event.relative.y * mouse_sensitivity
 		rotation_degrees.x = clamp(rotation_degrees.x, -90.0, 30.0);
 
