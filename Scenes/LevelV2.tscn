@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://dimqxeltypdce"]
+
+[ext_resource type="PackedScene" uid="uid://fp7nq7cixfcp" path="res://Prefabs/player.tscn" id="8_8vo7r"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fqxax"]
+
+[sub_resource type="Sky" id="Sky_sy3nm"]
+sky_material = SubResource("ProceduralSkyMaterial_fqxax")
+
+[sub_resource type="Environment" id="Environment_usyp2"]
+background_mode = 2
+sky = SubResource("Sky_sy3nm")
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_use_occlusion = true
+
+[sub_resource type="VoxelMesherTransvoxel" id="VoxelMesherTransvoxel_bdtt6"]
+
+[node name="Level" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("8_8vo7r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2997, 93.9226, 9.46729)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_usyp2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.286207, 0.2268, -0.930939, -0.958168, -0.0677458, 0.278073, 0, 0.971582, 0.236702, 0, 97.1156, -10.7849)
+shadow_enabled = true
+
+[node name="VoxelTerrain" type="VoxelTerrain" parent="."]
+mesher = SubResource("VoxelMesherTransvoxel_bdtt6")
+bounds = AABB(-544, -5.36871e+08, -5.36871e+08, 1088, 1.07374e+09, 1.07374e+09)
