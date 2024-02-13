@@ -15,16 +15,15 @@ var spring_arm: SpringArm3D;
 var model: Node3D;
 var body_bone: Node3D;
 var anim_tree: AnimationTree;
-
+var playback;
 
 func _ready():
 	spring_arm = get_node("CameraPivot/CameraArm");
 	spring_arm.add_excluded_object(get_rid());
 	model = get_node("Model");
 	anim_tree = get_node("AnimationTree");
+	playback = anim_tree.get("parameters/playback");
 	pass;
-
-
 
 func _physics_process(delta):
 	var aux_velocity: Vector3 = velocity;
@@ -39,15 +38,20 @@ func _physics_process(delta):
 		anim_tree.active = true;
 		accel_to_use = ACCELERATION;
 
+
+	#disable all this if attacking
 	# handle jump
 	if(Input.is_action_just_pressed("ui_accept") && is_on_floor()):
 		aux_velocity.y = JUMP_VELOCITY;
 	
 	# get the input direction and handle movement/deceleration
 	# replace UI actions with custom actions (input map)
+	
+	var is_anim_movement = playback.get_current_node() == "Movement";
 
-	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down");
-	var direction = spring_arm.basis * Vector3(input_dir.x, 0, input_dir.y).normalized();
+	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down") if is_anim_movement else Vector2.ZERO;
+
+	var direction = spring_arm.basis * Vector3(input_dir.x, 0, input_dir.y).normalized() if is_anim_movement else Vector3.ZERO;
 	aux_velocity.x = lerp(aux_velocity.x, direction.normalized().x * SPEED, accel_to_use * delta);
 	aux_velocity.z = lerp(aux_velocity.z, direction.normalized().z * SPEED, accel_to_use * delta);
 
@@ -70,7 +74,6 @@ func _physics_process(delta):
 		#	- we need to make a copy of the movement vector with no Y axis to make it always face upward
 		#		otherwise the simple act of falling will cause the player to tilt as the velocity vector 
 		#		will have a 180 degree angle with the model's forward vector
-
 		var aux_velocity_facing_up: Vector3 = Vector3(aux_velocity.x, 0, aux_velocity.z);
 		# Angle in degrees between the movement direction and the model's forward direction
 		# We clamp the able because we don't want more than a 30 degree tilt

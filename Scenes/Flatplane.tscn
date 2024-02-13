@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://bkq1ccb1lbevx"]
+
+[ext_resource type="PackedScene" uid="uid://fp7nq7cixfcp" path="res://Prefabs/player.tscn" id="1_5o43u"]
+[ext_resource type="PackedScene" uid="uid://bw8a1fqfo6ql8" path="res://Prefabs/Sandbag.tscn" id="2_0di26"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fqxax"]
+
+[sub_resource type="Sky" id="Sky_sy3nm"]
+sky_material = SubResource("ProceduralSkyMaterial_fqxax")
+
+[sub_resource type="Environment" id="Environment_usyp2"]
+background_mode = 2
+sky = SubResource("Sky_sy3nm")
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_use_occlusion = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0oblj"]
+size = Vector2(172.62, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4kv5f"]
+size = Vector3(190.95, 0.001, 282.415)
+
+[node name="Level" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_5o43u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.56301, 2.89183, 0.533347)
+
+[node name="Sandbag" parent="." instance=ExtResource("2_0di26")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.38641, 0, 5.23828)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_usyp2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.286207, 0.2268, -0.930939, -0.958168, -0.0677458, 0.278073, 0, 0.971582, 0.236702, 0, 97.1156, -10.7849)
+shadow_enabled = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_0oblj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.964, 0, 0.424)
+shape = SubResource("BoxShape3D_4kv5f")

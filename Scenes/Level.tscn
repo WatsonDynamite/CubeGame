@@ -1,28 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://ct24auagsh4cs"]
+[gd_scene load_steps=12 format=3 uid="uid://b4oucyd1vgfux"]
 
-[ext_resource type="Script" path="res://Scripts/Behaviors/ChunkManager.cs" id="1_qru7c"]
-[ext_resource type="Script" path="res://Scripts/Behaviors/BlockManager.cs" id="1_swxql"]
-[ext_resource type="Script" path="res://Scripts/Behaviors/Block.cs" id="2_xj53t"]
-[ext_resource type="Texture2D" uid="uid://5f3y4pefmu4v" path="res://Assets/BlockTextures/stone.png" id="3_hvolu"]
-[ext_resource type="Texture2D" uid="uid://jl66udjmkf5n" path="res://Assets/BlockTextures/dirt.png" id="4_10yji"]
-[ext_resource type="Texture2D" uid="uid://cp2t0ke43pcwd" path="res://Assets/BlockTextures/grass.png" id="5_7njst"]
-[ext_resource type="PackedScene" uid="uid://kj5ynbd37u6v" path="res://Prefabs/Chunk.tscn" id="6_ueoet"]
-[ext_resource type="PackedScene" uid="uid://fp7nq7cixfcp" path="res://Prefabs/player.tscn" id="7_5xcwb"]
-
-[sub_resource type="Resource" id="Resource_ll5hi"]
-script = ExtResource("2_xj53t")
-
-[sub_resource type="Resource" id="Resource_12ool"]
-script = ExtResource("2_xj53t")
-Texture = ExtResource("3_hvolu")
-
-[sub_resource type="Resource" id="Resource_5uev8"]
-script = ExtResource("2_xj53t")
-Texture = ExtResource("4_10yji")
-
-[sub_resource type="Resource" id="Resource_nllia"]
-script = ExtResource("2_xj53t")
-Texture = ExtResource("5_7njst")
+[ext_resource type="PackedScene" uid="uid://fp7nq7cixfcp" path="res://Prefabs/player.tscn" id="2_0xcys"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fqxax"]
 
@@ -36,32 +14,33 @@ ssao_enabled = true
 ssil_enabled = true
 sdfgi_use_occlusion = true
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0an7n"]
+noise_type = 4
+seed = 1460711701
+frequency = 0.0092
+
+[sub_resource type="VoxelGeneratorNoise" id="VoxelGeneratorNoise_qg0c2"]
+channel = 0
+noise = SubResource("FastNoiseLite_0an7n")
+
+[sub_resource type="VoxelBlockyModelEmpty" id="VoxelBlockyModelEmpty_01ja3"]
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_1bw4i"]
+color = Color(0.175607, 0.319666, 9.62615e-08, 1)
+
+[sub_resource type="VoxelBlockyLibrary" id="VoxelBlockyLibrary_bb4mj"]
+models = Array[VoxelBlockyModel]([SubResource("VoxelBlockyModelEmpty_01ja3"), SubResource("VoxelBlockyModelCube_1bw4i")])
+
+[sub_resource type="VoxelMesherBlocky" id="VoxelMesherBlocky_3qsan"]
+library = SubResource("VoxelBlockyLibrary_bb4mj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rm71n"]
+vertex_color_use_as_albedo = true
+
 [node name="Level" type="Node3D"]
 
-[node name="BlockManager" type="Node" parent="."]
-script = ExtResource("1_swxql")
-Air = SubResource("Resource_ll5hi")
-Stone = SubResource("Resource_12ool")
-Dirt = SubResource("Resource_5uev8")
-Grass = SubResource("Resource_nllia")
-
-[node name="ChunkManager" type="Node" parent="."]
-script = ExtResource("1_qru7c")
-ChunkScene = ExtResource("6_ueoet")
-
-[node name="Chunk" parent="." instance=ExtResource("6_ueoet")]
-
-[node name="Chunk2" parent="." instance=ExtResource("6_ueoet")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
-
-[node name="Chunk3" parent="." instance=ExtResource("6_ueoet")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 0)
-
-[node name="Chunk4" parent="." instance=ExtResource("6_ueoet")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -16)
-
-[node name="Player" parent="." instance=ExtResource("7_5xcwb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2997, 37.1989, 9.46729)
+[node name="Player" parent="." instance=ExtResource("2_0xcys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.6761, 210.145, 0.533347)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_usyp2")
@@ -69,3 +48,9 @@ environment = SubResource("Environment_usyp2")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.286207, 0.2268, -0.930939, -0.958168, -0.0677458, 0.278073, 0, 0.971582, 0.236702, 0, 97.1156, -10.7849)
 shadow_enabled = true
+
+[node name="VoxelTerrain" type="VoxelTerrain" parent="."]
+generator = SubResource("VoxelGeneratorNoise_qg0c2")
+mesher = SubResource("VoxelMesherBlocky_3qsan")
+max_view_distance = 1024
+material_override = SubResource("StandardMaterial3D_rm71n")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjoidowlrbgu"]
+
+[ext_resource type="PackedScene" uid="uid://dqmjf0o8dnwfo" path="res://Assets/Models/woodensword.gltf" id="1_xggmu"]
+
+[node name="WoodenSword" type="Node3D"]
+
+[node name="Model" parent="." instance=ExtResource("1_xggmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0584587)
