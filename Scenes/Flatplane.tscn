@@ -24,7 +24,7 @@ size = Vector3(190.95, 0.001, 282.415)
 [node name="Level" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_5o43u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.56301, 2.89183, 0.533347)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.56301, 0.031081, 0.533347)
 
 [node name="Sandbag" parent="." instance=ExtResource("2_0di26")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.38641, 0, 5.23828)

@@ -1,6 +1,5 @@
 extends CharacterBody3D
 
-
 const SPEED = 10.0
 const JUMP_VELOCITY = 10;
 const FRICTION = 6;
@@ -16,6 +15,8 @@ var model: Node3D;
 var body_bone: Node3D;
 var anim_tree: AnimationTree;
 var playback;
+
+var cur_wep_type = 1;
 
 func _ready():
 	spring_arm = get_node("CameraPivot/CameraArm");
@@ -38,7 +39,6 @@ func _physics_process(delta):
 		anim_tree.active = true;
 		accel_to_use = ACCELERATION;
 
-
 	#disable all this if attacking
 	# handle jump
 	if(Input.is_action_just_pressed("ui_accept") && is_on_floor()):
@@ -47,8 +47,7 @@ func _physics_process(delta):
 	# get the input direction and handle movement/deceleration
 	# replace UI actions with custom actions (input map)
 	
-	var is_anim_movement = playback.get_current_node() == "Movement";
-
+	var is_anim_movement = playback.get_current_node() == "Movement" + str(cur_wep_type);
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down") if is_anim_movement else Vector2.ZERO;
 
 	var direction = spring_arm.basis * Vector3(input_dir.x, 0, input_dir.y).normalized() if is_anim_movement else Vector3.ZERO;
@@ -61,7 +60,7 @@ func _physics_process(delta):
 	# we convert the velocity value to a value between 0 and 1 by dividing the absolute
 	# by our speed constant
 
-	anim_tree.set("parameters/Movement/blend_position", abs(velocity.length() / SPEED));
+	anim_tree.set("parameters/Movement" + str(cur_wep_type) + "/blend_position", abs(velocity.length() / SPEED));
 
 	move_and_slide();
 

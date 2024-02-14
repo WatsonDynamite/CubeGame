@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b4oucyd1vgfux"]
+[gd_scene load_steps=13 format=3 uid="uid://b4oucyd1vgfux"]
 
 [ext_resource type="PackedScene" uid="uid://fp7nq7cixfcp" path="res://Prefabs/player.tscn" id="2_0xcys"]
 
@@ -28,8 +28,11 @@ noise = SubResource("FastNoiseLite_0an7n")
 [sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_1bw4i"]
 color = Color(0.175607, 0.319666, 9.62615e-08, 1)
 
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_3jkoc"]
+color = Color(0.34902, 0.192157, 0.141176, 1)
+
 [sub_resource type="VoxelBlockyLibrary" id="VoxelBlockyLibrary_bb4mj"]
-models = Array[VoxelBlockyModel]([SubResource("VoxelBlockyModelEmpty_01ja3"), SubResource("VoxelBlockyModelCube_1bw4i")])
+models = Array[VoxelBlockyModel]([SubResource("VoxelBlockyModelEmpty_01ja3"), SubResource("VoxelBlockyModelCube_1bw4i"), SubResource("VoxelBlockyModelCube_3jkoc")])
 
 [sub_resource type="VoxelMesherBlocky" id="VoxelMesherBlocky_3qsan"]
 library = SubResource("VoxelBlockyLibrary_bb4mj")
