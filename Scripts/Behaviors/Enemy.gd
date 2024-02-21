@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 const MAX_REVENGE = 15;
 const MAX_HP = 9999;
-const MAX_POISE = 1;
+const MAX_POISE = 2;
 
 const FRICTION = 4;
 
@@ -17,7 +17,9 @@ var is_getting_comboed: bool = false;
 @onready var hit_stun_label = $Labels/HitStunLabel;
 @onready var poise_label = $Labels/PoiseLabel;
 @onready var revenge_label = $Labels/RevengeLabel;
+@onready var particles = $Particles;
 
+var particle_counter = 0;
 var model;
 
 var default_gravity = ProjectSettings.get_setting("physics/3d/default_gravity");
@@ -25,7 +27,6 @@ var gravity = default_gravity;
 
 func _ready():
 	model = get_node("Model");
-	
 
 func _physics_process(delta):
 	do_labels();
@@ -77,20 +78,29 @@ func receive_damage(attack: Attack, attacker_rot: float): #TODO: add Attack as a
 	cur_hp -= 1; 
 	cur_poise -= 1;
 	
-	
-	 #TODO: replace hitstun, rev, etc. with attack properties
-	
+	 #TODO: replace hitstun, etc. with attack properties
 	cur_hitstun = attack.hitstun;
 	
-	if(is_getting_comboed):
-		cur_revenge -= 1;
-		gravity = default_gravity / 2;
-		velocity = Vector3.ZERO;
-		velocity = attack.knockback.rotated(Vector3(0, 1, 0), attacker_rot);
+	velocity = Vector3.ZERO;
 	if(cur_poise <= 0):
 		is_getting_comboed = true;
+	if(is_getting_comboed):
+		_emit_hit_particle();
+		cur_revenge -= 1;
+		gravity = default_gravity / 2;
+		print(attacker_rot);
+		velocity = attack.knockback.rotated(Vector3(0, 1, 0), attacker_rot);
 	pass;
 
+
+func _emit_hit_particle():
+	if particle_counter == particles.get_child_count():
+		particle_counter = 0;
+	particles.get_child(particle_counter).set_emitting(true);
+	if(particle_counter > 0):
+		particles.get_child(particle_counter - 1).restart();
+	particle_counter+=1;
+	pass;
 
 func _die():
 	print("dead");

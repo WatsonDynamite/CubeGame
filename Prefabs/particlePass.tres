@@ -1,0 +1,4 @@
+[gd_resource type="BoxMesh" format=3 uid="uid://b4qlp82fa3ekw"]
+
+[resource]
+size = Vector3(0.15, 0.15, 0.15)

@@ -616,6 +616,7 @@ shape = SubResource("BoxShape3D_76qmk")
 target_position = Vector3(0, 0, 0)
 
 [node name="can_cancel" type="Node2D" parent="PlayerCombat"]
+visible = false
 
 [node name="Inventory" type="Node" parent="."]
 
@@ -695,7 +696,6 @@ parameters/Movement1/blend_position = -0.00377357
 parameters/Movement2/blend_position = -0.00188679
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-active = false
 root_node = NodePath("../Model")
 libraries = {
 "AnimationSet1": SubResource("AnimationLibrary_lwedm"),
