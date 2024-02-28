@@ -100,7 +100,7 @@ vertex_color_use_as_albedo = true
 [node name="Level" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("2_0xcys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.2419, 7.06091, -1.09736)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.242, 2.51135, -1.097)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_usyp2")
