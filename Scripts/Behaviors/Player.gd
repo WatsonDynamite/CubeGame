@@ -21,6 +21,8 @@ var playback;
 
 var cur_wep_type = 1;
 
+var is_inv_open = false;
+
 func _ready():
 	spring_arm = get_node("CameraPivot/CameraArm");
 	spring_arm.add_excluded_object(get_rid());
@@ -32,13 +34,23 @@ func _ready():
 func _physics_process(delta):
 	var aux_velocity: Vector3 = velocity;
 	var accel_to_use;
+	
+	if(is_inv_open): pass;
 
 	# add the gravity
 	if(!is_on_floor()):
-		anim_tree.active = false; #change this when implementing attack animations
-		aux_velocity.y -= gravity * delta;
+		anim_tree.set("parameters/Movement" + str(cur_wep_type) + "/conditions/is_jumping", true);
+		anim_tree.set("parameters/Movement" + str(cur_wep_type) + "/conditions/is_grounded", false);
+		
+		if(playback.get_current_node().rfindn("AnimSet" + str(cur_wep_type)) == -1):
+			#if not doing an air attack
+			aux_velocity.y -= gravity * delta;
+		else:
+			aux_velocity.y -= gravity / 2 * delta;
 		accel_to_use = AIRACCEL;
 	else:
+		anim_tree.set("parameters/Movement" + str(cur_wep_type) + "/conditions/is_jumping", false);
+		anim_tree.set("parameters/Movement" + str(cur_wep_type) + "/conditions/is_grounded", true);
 		anim_tree.active = true;
 		accel_to_use = ACCELERATION;
 
@@ -46,7 +58,6 @@ func _physics_process(delta):
 	# handle jump
 	if(Input.is_action_just_pressed("ui_accept") && is_on_floor()):
 		aux_velocity.y = JUMP_VELOCITY;
-	
 	# get the input direction and handle movement/deceleration
 	# replace UI actions with custom actions (input map)
 	
@@ -71,7 +82,9 @@ func _physics_process(delta):
 				aux_velocity.y = SLOPE_VELOCITY;
 	
 	
-	anim_tree.set("parameters/Movement" + str(cur_wep_type) + "/blend_position", abs(aux_velocity.length() / SPEED));
+	anim_tree.set("parameters/Movement" + str(cur_wep_type) + "/walking/blend_position", abs(aux_velocity.length() / SPEED));
+	print(anim_tree.get("parameters/Movement" + str(cur_wep_type) + "/walking/blend_position"));
+
 	velocity = aux_velocity
 	move_and_slide();
 

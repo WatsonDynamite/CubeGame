@@ -28,8 +28,13 @@ func _physics_process(_delta):
 	cur_space = character.get_world_3d().direct_space_state;
 	
 func _perform_attack(hitstun: int, dmg_mod: int, knockback: Vector3): #TODO: pass attack as func param
+	print('attack');
 	#apply a small impulse to player
-	character.velocity = global_basis * Vector3(0, 0, -1).normalized();
+	#a larger one in the air
+	if(character.is_on_floor()):
+		character.velocity = global_basis * Vector3(0, 0, -1).normalized();
+	else:
+		character.velocity = global_basis * Vector3(0, 1, -2);
 	if(shapecast && shapecast.is_colliding()):
 		var collision = shapecast.get_collider(0);
 		if(collision && collision.is_in_group("Enemy") && collision.has_method("receive_damage")):

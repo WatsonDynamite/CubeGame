@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://fp7nq7cixfcp"]
+[gd_scene load_steps=49 format=3 uid="uid://fp7nq7cixfcp"]
 
 [ext_resource type="Script" path="res://Scripts/Behaviors/Player.gd" id="1_1ngwd"]
 [ext_resource type="Script" path="res://Scripts/Behaviors/PlayerCombat.gd" id="2_n7r7g"]
@@ -76,22 +76,43 @@ states/Start/position = Vector2(89, 247)
 transitions = ["Start", "AnimationSet1_atk1_1", SubResource("AnimationNodeStateMachineTransition_cmhfw"), "AnimationSet1_atk1_1", "AnimationSet1_atk1_2", SubResource("AnimationNodeStateMachineTransition_knoa1"), "AnimationSet1_atk1_2", "AnimationSet1_atk1_3", SubResource("AnimationNodeStateMachineTransition_m6m5s"), "AnimationSet1_atk1_3", "End", SubResource("AnimationNodeStateMachineTransition_002e2"), "AnimationSet1_atk1_2", "End", SubResource("AnimationNodeStateMachineTransition_vrdnw"), "AnimationSet1_atk1_1", "End", SubResource("AnimationNodeStateMachineTransition_0l0pb")]
 graph_offset = Vector2(-41, 33)
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f0dc4"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_iyu4h"]
+animation = &"Movement/jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s18n6"]
 animation = &"Movement/idle"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_foepo"]
-animation = &"Movement/run"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1t1av"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gecrt"]
 animation = &"Movement/walk"
 
-[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_7n5lo"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_f0dc4")
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k5wb0"]
+animation = &"Movement/run"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_uvdms"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_s18n6")
 blend_point_0/pos = 0.0
-blend_point_1/node = SubResource("AnimationNodeAnimation_foepo")
-blend_point_1/pos = 1.0
-blend_point_2/node = SubResource("AnimationNodeAnimation_1t1av")
-blend_point_2/pos = 0.5
+blend_point_1/node = SubResource("AnimationNodeAnimation_gecrt")
+blend_point_1/pos = 0.5
+blend_point_2/node = SubResource("AnimationNodeAnimation_k5wb0")
+blend_point_2/pos = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6yo6i"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ghyym"]
+advance_mode = 2
+advance_condition = &"is_jumping"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_msqqd"]
+advance_mode = 2
+advance_condition = &"is_grounded"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_iw8p4"]
+states/Movement_idle/node = SubResource("AnimationNodeAnimation_iyu4h")
+states/Movement_idle/position = Vector2(512, 52)
+states/walking/node = SubResource("AnimationNodeBlendSpace1D_uvdms")
+states/walking/position = Vector2(370, 151)
+transitions = ["Start", "walking", SubResource("AnimationNodeStateMachineTransition_6yo6i"), "walking", "Movement_idle", SubResource("AnimationNodeStateMachineTransition_ghyym"), "Movement_idle", "walking", SubResource("AnimationNodeStateMachineTransition_msqqd")]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sf10y"]
 animation = &"Movement/idle"
@@ -110,33 +131,33 @@ blend_point_1/pos = 1.0
 blend_point_2/node = SubResource("AnimationNodeAnimation_l734u")
 blend_point_2/pos = 0.5
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uyi5r"]
-advance_mode = 2
-advance_expression = "cur_wep_type == 1"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iyr54"]
-xfade_time = 0.1
-advance_mode = 2
-advance_condition = &"can_next_attack"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_63c7h"]
-xfade_time = 0.1
-switch_mode = 2
-advance_mode = 2
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d7n6t"]
 advance_mode = 2
 advance_expression = "cur_wep_type == 2"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bih1h"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"can_next_attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_laal3"]
+xfade_time = 0.1
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rls4r"]
+advance_mode = 2
+advance_expression = "cur_wep_type == 1"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5y3le"]
 states/AnimSet1Atk1/node = SubResource("AnimationNodeStateMachine_tto5v")
-states/AnimSet1Atk1/position = Vector2(319, 31)
-states/Movement1/node = SubResource("AnimationNodeBlendSpace1D_7n5lo")
-states/Movement1/position = Vector2(215, 91)
+states/AnimSet1Atk1/position = Vector2(645, 56)
+states/Movement1/node = SubResource("AnimationNodeStateMachine_iw8p4")
+states/Movement1/position = Vector2(360, 91)
 states/Movement2/node = SubResource("AnimationNodeBlendSpace1D_rbk1a")
-states/Movement2/position = Vector2(215, 159)
+states/Movement2/position = Vector2(454, 227)
 states/Start/position = Vector2(78, 148)
-transitions = ["Start", "Movement1", SubResource("AnimationNodeStateMachineTransition_uyi5r"), "Movement1", "AnimSet1Atk1", SubResource("AnimationNodeStateMachineTransition_iyr54"), "AnimSet1Atk1", "Movement1", SubResource("AnimationNodeStateMachineTransition_63c7h"), "Start", "Movement2", SubResource("AnimationNodeStateMachineTransition_d7n6t")]
+transitions = ["Start", "Movement2", SubResource("AnimationNodeStateMachineTransition_d7n6t"), "Movement1", "AnimSet1Atk1", SubResource("AnimationNodeStateMachineTransition_bih1h"), "AnimSet1Atk1", "Movement1", SubResource("AnimationNodeStateMachineTransition_laal3"), "Start", "Movement1", SubResource("AnimationNodeStateMachineTransition_rls4r")]
 
 [sub_resource type="Animation" id="Animation_3330w"]
 resource_name = "set1_atk1_1"
@@ -596,10 +617,62 @@ tracks/5/keys = {
 "values": []
 }
 
+[sub_resource type="Animation" id="Animation_c8wtc"]
+resource_name = "jump"
+length = 0.6
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 1, 0, 0.2, 1, 0, 0.9, 0)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HandL")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.7, 0.675, 0, 0.2, 1, 0.7, 0.675, 0.5)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HandR")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, -0.7, 0.675, 0, 0.2, 1, -0.7, 0.675, -0.5)
+tracks/3/type = "position_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FootR")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, -0.3, 0.0937519, 0, 0.2, 1, -0.3, 0.094, 0.5)
+tracks/4/type = "position_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FootL")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0.3, 0.0937519, 0, 0.2, 1, 0.3, 0.094, -0.5)
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../PlayerCombat/can_cancel:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xoxpg"]
 _data = {
 "RESET": SubResource("Animation_n287h"),
 "idle": SubResource("Animation_ee8c4"),
+"jump": SubResource("Animation_c8wtc"),
 "run": SubResource("Animation_o6ax5"),
 "walk": SubResource("Animation_r1gkh")
 }
@@ -616,7 +689,6 @@ shape = SubResource("BoxShape3D_76qmk")
 target_position = Vector3(0, 0, 0)
 
 [node name="can_cancel" type="Node2D" parent="PlayerCombat"]
-visible = false
 
 [node name="Inventory" type="Node" parent="."]
 
@@ -641,6 +713,7 @@ current = true
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Body" type="Node3D" parent="Model"]
+transform = Transform3D(0.865759, 0.0876317, 0.492729, -0.000908375, 0.984824, -0.173555, -0.50046, 0.149809, 0.8527, 0, 1, 0)
 
 [node name="Head" type="Node3D" parent="Model/Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.831681, 0)
@@ -657,14 +730,14 @@ mesh = SubResource("BoxMesh_aya8l")
 transform = Transform3D(-0.699139, -0.714985, -1.48544e-07, 0.714985, -0.699139, 6.2506e-08, -1.48544e-07, -6.2506e-08, 1, 0.452127, 0.509588, 0.493297)
 
 [node name="HandL" type="Node3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
+transform = Transform3D(-0.286906, 0, 0.957958, 0, 1, 0, -0.957959, 0, -0.286906, 0.53, 1.235, -0.645)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Model/HandL"]
 transform = Transform3D(1, -3.26236e-09, 0, 2.65391e-08, 1, -2.32831e-10, -1.16415e-10, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_dwvro")
 
 [node name="HandR" type="Node3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
+transform = Transform3D(-0.619844, 5.41885e-08, 0.784724, -8.74228e-08, -1, 0, 0.784725, -6.86028e-08, 0.619844, 0.25, 0.75, 0.5)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Model/HandR"]
 mesh = SubResource("BoxMesh_dwvro")
@@ -675,11 +748,13 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.
 [node name="WoodenSword" parent="Model/HandR/WeaponHandPivot" instance=ExtResource("3_u04ja")]
 
 [node name="FootR" type="Node3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, -0.3)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Model/FootR"]
 mesh = SubResource("BoxMesh_dwvro")
 
 [node name="FootL" type="Node3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0.3)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Model/FootL"]
 mesh = SubResource("BoxMesh_dwvro")
@@ -690,9 +765,11 @@ tree_root = SubResource("AnimationNodeStateMachine_5y3le")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/can_next_attack = false
-parameters/AnimSet1Atk1/conditions/can_next_attack = false
+parameters/AnimSet1Atk1/conditions/can_next_attack = true
 parameters/AnimSet1Atk1/conditions/cannot_next_attack = false
-parameters/Movement1/blend_position = -0.00377357
+parameters/Movement1/conditions/is_grounded = false
+parameters/Movement1/conditions/is_jumping = false
+parameters/Movement1/walking/blend_position = 0
 parameters/Movement2/blend_position = -0.00188679
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
