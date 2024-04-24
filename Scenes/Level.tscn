@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://b4oucyd1vgfux"]
+[gd_scene load_steps=14 format=3 uid="uid://b4oucyd1vgfux"]
 
 [ext_resource type="Script" path="res://Scripts/Testing/CallWorldGen.gd" id="1_4hgef"]
-[ext_resource type="PackedScene" uid="uid://fp7nq7cixfcp" path="res://Prefabs/player.tscn" id="2_0xcys"]
 [ext_resource type="PackedScene" uid="uid://bw8a1fqfo6ql8" path="res://Prefabs/Sandbag.tscn" id="2_jv3vm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fqxax"]
@@ -33,11 +32,15 @@ library = SubResource("VoxelBlockyLibrary_bb4mj")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rm71n"]
 vertex_color_use_as_albedo = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5yk5l"]
+transparency = 1
+albedo_color = Color(0.247059, 0.360784, 1, 0.572549)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ycmv4"]
+material = SubResource("StandardMaterial3D_5yk5l")
+
 [node name="Level" type="Node3D"]
 script = ExtResource("1_4hgef")
-
-[node name="Player" parent="." instance=ExtResource("2_0xcys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.8441, 120.269, -1.097)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_usyp2")
@@ -54,3 +57,6 @@ material_override = SubResource("StandardMaterial3D_rm71n")
 
 [node name="Sandbag" parent="." instance=ExtResource("2_jv3vm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.0031, 5.97277, -8.95927)
+
+[node name="Water" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_ycmv4")

@@ -9,12 +9,7 @@ var shapeMap = $ShapeMap;
 
 func _ready():
 	
-	const size = 256;
-	const gens = 3;
-	
-	#var celAut = cellularAutomata.new(size, gens);
-	#var grid = celAut.generate();
-	
+	const size = 1024;
 	
 	var perFal = perlinFalloff.new(size);
 	perFal.generate();

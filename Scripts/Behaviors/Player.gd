@@ -69,21 +69,23 @@ func _physics_process(delta):
 	aux_velocity.z = lerp(aux_velocity.z, direction.normalized().z * SPEED, accel_to_use * delta);
 
 
+	# AUTO-HOP CODE
+	# VERY BUGGY
+	
+	#if(direction.length() > 0):
+		#var hit = vt.raycast(Vector3(global_position.x, global_position.y + 0.5, global_position.z), Vector3(direction.x, 0, direction.z).normalized(), 2);
+		#if(hit):
+			#if(vt.get_voxel(Vector3(hit.position.x, hit.position.y + 1, hit.position.z)) == 0 && is_on_floor()):
+				#position = lerp(position, Vector3(position.x, hit.position.y + 2, position.z), delta * 10);
+				#aux_velocity.y = SLOPE_VELOCITY;
+	
+
 	# set animation on blend tree
 	# we convert the velocity value to a value between 0 and 1 by dividing the absolute
 	# by our speed constant
-
-
-	if(direction.length() > 0):
-		var hit = vt.raycast(Vector3(global_position.x, global_position.y + 0.5, global_position.z), Vector3(direction.x, 0, direction.z).normalized(), 2);
-		if(hit):
-			if(vt.get_voxel(Vector3(hit.position.x, hit.position.y + 1, hit.position.z)) == 0 && is_on_floor()):
-				position = lerp(position, Vector3(position.x, hit.position.y + 2, position.z), delta * 10);
-				aux_velocity.y = SLOPE_VELOCITY;
-	
 	
 	anim_tree.set("parameters/Movement" + str(cur_wep_type) + "/walking/blend_position", abs(aux_velocity.length() / SPEED));
-	print(anim_tree.get("parameters/Movement" + str(cur_wep_type) + "/walking/blend_position"));
+	# print(anim_tree.get("parameters/Movement" + str(cur_wep_type) + "/walking/blend_position"));
 
 	velocity = aux_velocity
 	move_and_slide();
