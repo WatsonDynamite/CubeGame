@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://b4oucyd1vgfux"]
 
+[ext_resource type="Script" path="res://Scripts/Testing/CallWorldGen.gd" id="1_4hgef"]
 [ext_resource type="PackedScene" uid="uid://fp7nq7cixfcp" path="res://Prefabs/player.tscn" id="2_0xcys"]
-[ext_resource type="VoxelGeneratorGraph" uid="uid://di0qldesuq140" path="res://TestTerrainGenerators/other_voxel_generator_graph.tres" id="2_2lmnl"]
 [ext_resource type="PackedScene" uid="uid://bw8a1fqfo6ql8" path="res://Prefabs/Sandbag.tscn" id="2_jv3vm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fqxax"]
@@ -34,9 +34,10 @@ library = SubResource("VoxelBlockyLibrary_bb4mj")
 vertex_color_use_as_albedo = true
 
 [node name="Level" type="Node3D"]
+script = ExtResource("1_4hgef")
 
 [node name="Player" parent="." instance=ExtResource("2_0xcys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.8441, 4.89313, -1.097)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.8441, 120.269, -1.097)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_usyp2")
@@ -46,7 +47,7 @@ transform = Transform3D(-0.286207, 0.2268, -0.930939, -0.958168, -0.0677458, 0.2
 shadow_enabled = true
 
 [node name="VoxelTerrain" type="VoxelTerrain" parent="."]
-generator = ExtResource("2_2lmnl")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 111.742, 0)
 mesher = SubResource("VoxelMesherBlocky_3qsan")
 max_view_distance = 256
 material_override = SubResource("StandardMaterial3D_rm71n")

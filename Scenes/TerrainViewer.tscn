@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cja27i8yekt33"]
+
+[ext_resource type="Script" path="res://Scripts/Behaviors/World/GenerateMaps.gd" id="1_m6m0f"]
+[ext_resource type="Texture2D" uid="uid://bvccumyy2pq2p" path="res://icon.svg" id="2_kn6ub"]
+
+[node name="TerrainViewer" type="Node2D"]
+script = ExtResource("1_m6m0f")
+
+[node name="ShapeMap" type="TextureRect" parent="."]
+texture_filter = 1
+offset_right = 323.0
+offset_bottom = 305.0
+texture = ExtResource("2_kn6ub")
