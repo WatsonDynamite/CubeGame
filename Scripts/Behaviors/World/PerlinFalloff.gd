@@ -88,8 +88,7 @@ func get_viable_spawn_point_xy():
 	if(selectedSpawnIdx != -1):
 		var x = selectedSpawnIdx % size;
 		var y = int(selectedSpawnIdx / size);
-		return Vector2(x, y);	
-	
+		return Vector2(x, y);
 		
 	
 	
