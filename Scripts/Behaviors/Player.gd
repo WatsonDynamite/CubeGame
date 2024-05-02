@@ -17,7 +17,6 @@ var body_bone: Node3D;
 var anim_tree: AnimationTree;
 var playback;
 
-@onready var vt : VoxelTool = get_parent().get_node("VoxelTerrain").get_voxel_tool();
 
 var cur_wep_type = 1;
 
@@ -67,18 +66,6 @@ func _physics_process(delta):
 	var direction = spring_arm.basis * Vector3(input_dir.x, 0, input_dir.y).normalized() if is_anim_movement else Vector3.ZERO;
 	aux_velocity.x = lerp(aux_velocity.x, direction.normalized().x * SPEED, accel_to_use * delta);
 	aux_velocity.z = lerp(aux_velocity.z, direction.normalized().z * SPEED, accel_to_use * delta);
-
-
-	# AUTO-HOP CODE
-	# VERY BUGGY
-	
-	#if(direction.length() > 0):
-		#var hit = vt.raycast(Vector3(global_position.x, global_position.y + 0.5, global_position.z), Vector3(direction.x, 0, direction.z).normalized(), 2);
-		#if(hit):
-			#if(vt.get_voxel(Vector3(hit.position.x, hit.position.y + 1, hit.position.z)) == 0 && is_on_floor()):
-				#position = lerp(position, Vector3(position.x, hit.position.y + 2, position.z), delta * 10);
-				#aux_velocity.y = SLOPE_VELOCITY;
-	
 
 	# set animation on blend tree
 	# we convert the velocity value to a value between 0 and 1 by dividing the absolute
