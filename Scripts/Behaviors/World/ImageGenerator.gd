@@ -23,5 +23,6 @@ static func createNoiseImage(noiseMap: Array, size: int):
 	
 	var img = Image.create_from_data(size, size, false, Image.FORMAT_RGBAF, colorMap.to_byte_array());
 	img.save_png("res://Maps/noise.png");
+	return img;
 	
 	

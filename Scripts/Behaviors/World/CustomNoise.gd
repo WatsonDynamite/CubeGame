@@ -7,7 +7,7 @@ static func generateNoiseMap(size: int, scale: int, octaves: int, persistence: f
 	
 	
 	var noise = FastNoiseLite.new()
-	noise.noise_type = FastNoiseLite.TYPE_PERLIN;
+	noise.noise_type = FastNoiseLite.TYPE_SIMPLEX_SMOOTH;
 	noise.set_seed(randi())
 	
 	if (scale <= 0): scale = 0.001;

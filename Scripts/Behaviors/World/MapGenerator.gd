@@ -17,6 +17,8 @@ var persistence: float;
 var lacunarity: float;
 @export
 var meshHeightMultiplier: float = 16;
+@export
+var meshHeightCurve: Curve;
 
 @export var execute_button: bool = false:
 	set = _set_execute_button;
@@ -25,10 +27,15 @@ var meshHeightMultiplier: float = 16;
 var MapDisplay = $MapDisplay
 
 var regions: Array[TerrainType] = [
-	TerrainType.new("Water", 0.2, Color.BLUE),
-	TerrainType.new("Sand", 0.4, Color.SANDY_BROWN),
-	TerrainType.new("Land", 0.7, Color.GREEN),
-	TerrainType.new("Mountain", 1, Color.SLATE_GRAY),
+	TerrainType.new("Water_Deep", 0.3, Color.DARK_BLUE),
+	TerrainType.new("Water", 0.4, Color.BLUE),
+	TerrainType.new("Sand", 0.5, Color.SANDY_BROWN),
+	TerrainType.new("Grass", 0.55, Color.GREEN),
+	TerrainType.new("Grass_2", 0.6, Color.DARK_GREEN),
+	TerrainType.new("Rock", 0.7, Color.SADDLE_BROWN),
+	TerrainType.new("Rock", 0.8, Color.SIENNA),
+	TerrainType.new("Mountain", 0.9, Color.SLATE_GRAY),
+	TerrainType.new("Snow", 1, Color.WHITE),
 ];
 
 func _ready():
@@ -58,7 +65,7 @@ func generateMap():
 		DrawMode.NOISE:
 			MapDisplay.drawNoiseMap(noiseMap);
 		DrawMode.MESH:
-			MapDisplay.drawMesh(MeshGenerator.generateTerrainMesh(noiseMap, colorMap, meshHeightMultiplier));
+			MapDisplay.drawMesh(MeshGenerator.generateTerrainMesh(noiseMap, colorMap, meshHeightMultiplier, meshHeightCurve));
 	
 	
 func _set_execute_button(new_value: bool) -> void:
